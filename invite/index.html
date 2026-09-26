@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathless — Invite</title>
+<!--
+  This file only exists so the bare /invite or /invite/ path (no token) is
+  served directly by GitHub Pages as a normal 200 page, instead of falling
+  through to 404.html. It shares 404.html's markup, styles and script
+  verbatim (duplicated, not linked, since this repo keeps every page a
+  single self-contained file with no external assets); with no token in the
+  path, extractToken() below always returns null here, so it always renders
+  the "broken" message. See 404.html for the token-bearing case and for
+  comments on the parsing/sanitization logic.
+-->
+<style>
+  html,body{margin:0;padding:0;background:#F4F4F0;color:#111111;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex;
+    min-height:100vh;
+    align-items:center;
+    justify-content:center;
+  }
+  .wrap{max-width:420px;width:100%;padding:48px 24px;text-align:center;box-sizing:border-box;}
+  h1{font-size:20px;margin:0 0 20px;font-weight:700;}
+  p{font-size:16px;line-height:1.5;margin:0 0 28px;}
+  .btn{
+    display:inline-block;
+    background:#D4FF3A;
+    color:#111111;
+    font-weight:700;
+    text-decoration:none;
+    padding:16px 32px;
+    border-radius:12px;
+    font-size:17px;
+  }
+  .muted{font-size:13px;line-height:1.5;color:#555555;margin:32px 0 0;}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+(function () {
+  'use strict';
+
+  var TOKEN_RE = /^[A-Za-z0-9_-]{1,512}$/;
+
+  function extractToken(pathname) {
+    var m = pathname.match(/^\/invite\/?([^\/?#]*)/);
+    if (!m) return null;
+    var candidate = m[1] || '';
+    if (!TOKEN_RE.test(candidate)) return null;
+    return candidate;
+  }
+
+  function renderBroken(root) {
+    var h1 = document.createElement('h1');
+    h1.textContent = 'Mathless';
+    var p = document.createElement('p');
+    p.textContent = 'This invite link looks broken.';
+    root.appendChild(h1);
+    root.appendChild(p);
+  }
+
+  function renderInvite(root, token) {
+    var h1 = document.createElement('h1');
+    h1.textContent = 'Mathless';
+
+    var lead = document.createElement('p');
+    lead.textContent = "You've been invited to a group on Mathless";
+
+    var target = 'com.mathless.app://invite/' + encodeURIComponent(token);
+
+    var btn = document.createElement('a');
+    btn.className = 'btn';
+    btn.textContent = 'Open in Mathless';
+    btn.setAttribute('href', target);
+
+    var muted = document.createElement('p');
+    muted.className = 'muted';
+    muted.textContent = "Don't have the app yet? Coming soon to the App Store and Google Play.";
+
+    root.appendChild(h1);
+    root.appendChild(lead);
+    root.appendChild(btn);
+    root.appendChild(muted);
+
+    try {
+      window.location.href = target;
+    } catch (e) {}
+  }
+
+  var root = document.getElementById('app');
+  var token = extractToken(window.location.pathname);
+  if (token) {
+    renderInvite(root, token);
+  } else {
+    renderBroken(root);
+  }
+})();
+</script>
+</body>
+</html>

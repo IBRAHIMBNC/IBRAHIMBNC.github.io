@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathless — Invite</title>
+<style>
+  html,body{margin:0;padding:0;background:#F4F4F0;color:#111111;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex;
+    min-height:100vh;
+    align-items:center;
+    justify-content:center;
+  }
+  .wrap{max-width:420px;width:100%;padding:48px 24px;text-align:center;box-sizing:border-box;}
+  h1{font-size:20px;margin:0 0 20px;font-weight:700;}
+  p{font-size:16px;line-height:1.5;margin:0 0 28px;}
+  .btn{
+    display:inline-block;
+    background:#D4FF3A;
+    color:#111111;
+    font-weight:700;
+    text-decoration:none;
+    padding:16px 32px;
+    border-radius:12px;
+    font-size:17px;
+  }
+  .muted{font-size:13px;line-height:1.5;color:#555555;margin:32px 0 0;}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+(function () {
+  'use strict';
+
+  // The app's tokens are 256-bit values encoded as base64url, left
+  // byte-for-byte by DeepLinkService.extractInviteToken (no re-encoding).
+  // This charset check is this page's own gate, independent of the app: it
+  // is what stands between an arbitrary URL path and this page's DOM/href.
+  var TOKEN_RE = /^[A-Za-z0-9_-]{1,512}$/;
+
+  // GitHub Pages has no server rewrites, so a real path like
+  // /invite/<token> 404s and Pages serves this file in its place — the URL
+  // bar still shows /invite/<token>, so location.pathname carries the token
+  // here. Extract whatever sits between "/invite/" and the next "/", "?" or
+  // "#" (mirrors extractInviteToken's use of Uri.pathSegments[1], which also
+  // stops at the next path segment and never sees the query or fragment).
+  function extractToken(pathname) {
+    var m = pathname.match(/^\/invite\/?([^\/?#]*)/);
+    if (!m) return null;
+    var candidate = m[1] || '';
+    if (!TOKEN_RE.test(candidate)) return null;
+    return candidate;
+  }
+
+  function renderBroken(root) {
+    var h1 = document.createElement('h1');
+    h1.textContent = 'Mathless';
+    var p = document.createElement('p');
+    p.textContent = 'This invite link looks broken.';
+    root.appendChild(h1);
+    root.appendChild(p);
+  }
+
+  function renderInvite(root, token) {
+    // token has already passed TOKEN_RE above, so it is base64url-only
+    // (A-Z a-z 0-9 _ -). Never assembled as a string of HTML: every piece
+    // of content below goes in through textContent or setAttribute.
+    var h1 = document.createElement('h1');
+    h1.textContent = 'Mathless';
+
+    var lead = document.createElement('p');
+    lead.textContent = "You've been invited to a group on Mathless";
+
+    var target = 'com.mathless.app://invite/' + encodeURIComponent(token);
+
+    var btn = document.createElement('a');
+    btn.className = 'btn';
+    btn.textContent = 'Open in Mathless';
+    btn.setAttribute('href', target);
+
+    var muted = document.createElement('p');
+    muted.className = 'muted';
+    muted.textContent = "Don't have the app yet? Coming soon to the App Store and Google Play.";
+
+    root.appendChild(h1);
+    root.appendChild(lead);
+    root.appendChild(btn);
+    root.appendChild(muted);
+
+    // Auto-attempt exactly once, on load. The anchor above stays as the
+    // manual fallback for the in-app browsers (WhatsApp, Instagram) that
+    // block a scheme redirect fired from script, and for anyone who lands
+    // here again without a fresh navigation.
+    try {
+      window.location.href = target;
+    } catch (e) {
+      // Some in-app webviews throw on an unregistered custom scheme instead
+      // of silently ignoring it. The button is still there either way.
+    }
+  }
+
+  var root = document.getElementById('app');
+  var token = extractToken(window.location.pathname);
+  if (token) {
+    renderInvite(root, token);
+  } else {
+    renderBroken(root);
+  }
+})();
+</script>
+</body>
+</html>

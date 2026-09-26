@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mathless.app",
+      "sha256_cert_fingerprints": [
+        "38:08:1E:FB:1E:98:7D:85:59:E5:DB:89:3A:C2:A9:1C:3D:9A:62:04:0B:80:2B:FA:BB:53:E4:96:E9:D6:88:5F"
+      ]
+    }
+  }
+]
