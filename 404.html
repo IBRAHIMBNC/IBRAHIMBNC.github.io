@@ -26,6 +26,8 @@
     border-radius:12px;
     font-size:17px;
   }
+  .dev{font-size:13px;line-height:1.5;margin:20px 0 0;}
+  .dev a{color:#555555;}
   .muted{font-size:13px;line-height:1.5;color:#555555;margin:32px 0 0;}
 </style>
 </head>
@@ -81,6 +83,14 @@
     btn.textContent = 'Open in Mathless';
     btn.setAttribute('href', target);
 
+    var devTarget = 'com.mathless.app.dev://invite/' + encodeURIComponent(token);
+    var dev = document.createElement('p');
+    dev.className = 'dev';
+    var devLink = document.createElement('a');
+    devLink.textContent = 'Using the dev build? Open in Mathless Dev';
+    devLink.setAttribute('href', devTarget);
+    dev.appendChild(devLink);
+
     var muted = document.createElement('p');
     muted.className = 'muted';
     muted.textContent = "Don't have the app yet? Coming soon to the App Store and Google Play.";
@@ -88,6 +98,7 @@
     root.appendChild(h1);
     root.appendChild(lead);
     root.appendChild(btn);
+    root.appendChild(dev);
     root.appendChild(muted);
 
     // Auto-attempt exactly once, on load. The anchor above stays as the
