@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathless — Delete your account</title>
+<meta name="description" content="Delete your Mathless account and its data, without the app.">
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --bg:#F4F4F0;--ink:#111111;--muted:#555555;--card:#FFFFFF;
+    --line:rgba(17,17,17,.12);--field:#FFFFFF;--field-line:rgba(17,17,17,.28);
+    --accent:#D4FF3A;--accent-ink:#111111;
+    --danger:#B3261E;--danger-ink:#FFFFFF;--danger-bg:rgba(179,38,30,.08);
+    --focus:#111111;
+    color-scheme:light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#111111;--ink:#F4F4F0;--muted:#A6A6A0;--card:#1C1C1B;
+      --line:rgba(244,244,240,.14);--field:#111111;--field-line:rgba(244,244,240,.32);
+      --danger:#FF8A80;--danger-ink:#111111;--danger-bg:rgba(255,138,128,.12);
+      --focus:#D4FF3A;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%;}
+  .wrap{max-width:640px;margin:0 auto;padding:24px 16px 64px;}
+  header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:32px;}
+  .brand{font-size:20px;font-weight:700;color:var(--ink);text-decoration:none;}
+  nav{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14px;}
+  nav a{color:var(--muted);text-decoration:none;}
+  nav a[aria-current="page"]{color:var(--ink);font-weight:700;}
+  h1{font-size:28px;line-height:1.2;margin:0 0 12px;font-weight:700;letter-spacing:-.01em;}
+  h2{font-size:19px;line-height:1.3;margin:32px 0 8px;font-weight:700;}
+  p,ul{margin:0 0 16px;}
+  ul{padding-left:22px;}
+  li{margin:0 0 6px;}
+  a{color:var(--ink);text-underline-offset:2px;overflow-wrap:anywhere;}
+  .lead{font-size:17px;}
+  .muted{color:var(--muted);font-size:14px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 16px;margin:32px 0 16px;}
+  .card h2{margin-top:0;}
+  label{display:block;font-size:14px;font-weight:600;margin:0 0 6px;}
+  input{
+    display:block;width:100%;font:inherit;font-size:17px;color:var(--ink);background:var(--field);
+    border:1px solid var(--field-line);border-radius:12px;padding:13px 14px;margin:0 0 16px;
+  }
+  input.code{letter-spacing:.35em;font-variant-numeric:tabular-nums;font-size:22px;text-align:center;}
+  .btn{
+    display:block;width:100%;border:0;border-radius:12px;padding:16px 20px;font:inherit;font-size:17px;font-weight:700;
+    background:var(--accent);color:var(--accent-ink);cursor:pointer;
+  }
+  .btn.danger{background:var(--danger);color:var(--danger-ink);}
+  .btn[disabled]{opacity:.4;cursor:not-allowed;}
+  .link{background:none;border:0;padding:0;font:inherit;font-size:15px;color:var(--ink);text-decoration:underline;text-underline-offset:2px;cursor:pointer;}
+  .row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;}
+  .who{font-size:17px;font-weight:700;margin:0 0 16px;overflow-wrap:anywhere;}
+  .msg{border-radius:12px;padding:12px 14px;margin:0 0 16px;font-size:15px;}
+  .msg.info{background:var(--bg);}
+  .msg.error{background:var(--danger-bg);color:var(--danger);}
+  .msg:empty{display:none;}
+  [hidden]{display:none !important;}
+  footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);}
+  footer a{color:var(--muted);}
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="/mathless/">Mathless</a>
+  <nav aria-label="Mathless pages">
+    <a href="/mathless/privacy/">Privacy</a>
+    <a href="/mathless/terms/">Terms</a>
+    <a href="/mathless/delete-account/" aria-current="page">Delete account</a>
+  </nav>
+</header>
+
+<main>
+<h1>Delete your account</h1>
+<p class="lead">You can delete your Mathless account here, without the app. In the app, the same thing is under <strong>Account → Delete account</strong>.</p>
+
+<h2>What is deleted</h2>
+<ul>
+  <li>Your account, sign-in details and sessions, on every device.</li>
+  <li>Your profile: display name, phone number and profile photo.</li>
+  <li>Groups and ledgers that no one else with an account is part of, with everything in them.</li>
+  <li>Invites you sent or accepted, and pending invites sent to your address.</li>
+</ul>
+
+<h2>What stays in groups you share</h2>
+<p>Shared groups are other people's records too, so they stay, and every balance stays exactly as it was. No money moves. In those groups:</p>
+<ul>
+  <li>the name the group knows you by stays on the entries, so everyone can still tell whose share is whose;</li>
+  <li>that name is no longer linked to any account;</li>
+  <li>your email address and phone number are removed.</li>
+</ul>
+<p>If you were the only admin of a shared group, another member with an account becomes admin. Want a copy first? Use <strong>Account → Export your data</strong> in the app before you delete.</p>
+<p class="muted">Deletion happens straight away and can't be undone. Copies may stay in the hosting provider's backups for a short time until they are overwritten. Details are in the <a href="/mathless/privacy/">privacy policy</a>.</p>
+
+<noscript>
+  <div class="card"><p>This page needs JavaScript to confirm it's you. Instead, email <a href="mailto:imibrahimnisar@gmail.com?subject=Delete%20my%20Mathless%20account">imibrahimnisar@gmail.com</a> from the address on your account and ask for it to be deleted.</p></div>
+</noscript>
+
+<section class="card" id="flow" hidden aria-live="polite">
+  <!-- Step 1: email -->
+  <form id="step-email" novalidate>
+    <h2>Confirm it's you</h2>
+    <p class="muted">Enter the email address you use for Mathless. If you signed in with Google, use your Google email. We'll send a 6-digit code.</p>
+    <div class="msg error" id="email-error" role="alert"></div>
+    <label for="email">Email address</label>
+    <input id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required>
+    <button class="btn" type="submit" id="send-btn">Send code</button>
+  </form>
+
+  <!-- Step 2: code -->
+  <form id="step-code" novalidate hidden>
+    <h2>Enter your code</h2>
+    <div class="msg info" id="code-info"></div>
+    <div class="msg error" id="code-error" role="alert"></div>
+    <label for="code">6-digit code</label>
+    <input id="code" class="code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="6" required>
+    <button class="btn" type="submit" id="verify-btn">Continue</button>
+    <div class="row">
+      <button class="link" type="button" id="resend-btn">Send a new code</button>
+      <button class="link" type="button" id="change-email-btn">Use a different email</button>
+    </div>
+  </form>
+
+  <!-- Step 3: confirm -->
+  <form id="step-confirm" novalidate hidden>
+    <h2>Delete this account?</h2>
+    <p class="muted" style="margin-bottom:4px">Signed in as</p>
+    <p class="who" id="who"></p>
+    <div class="msg error" id="confirm-error" role="alert"></div>
+    <label for="confirm">Type DELETE to confirm</label>
+    <input id="confirm" name="confirm" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false">
+    <button class="btn danger" type="submit" id="delete-btn" disabled>Delete my account permanently</button>
+    <div class="row">
+      <button class="link" type="button" id="cancel-btn">Cancel, keep my account</button>
+    </div>
+  </form>
+
+  <!-- Step 4: done -->
+  <div id="step-done" hidden>
+    <h2>Your account was deleted</h2>
+    <p>Your account and profile are gone, and you've been signed out here. If Mathless is still open on a phone, it will sign out there too. Groups you shared keep their records.</p>
+    <p class="muted">You can close this page.</p>
+  </div>
+</section>
+
+<p class="muted">Trouble with this page? Email <a href="mailto:imibrahimnisar@gmail.com?subject=Delete%20my%20Mathless%20account">imibrahimnisar@gmail.com</a> from the address on your account.</p>
+</main>
+
+<footer>
+  <a href="/mathless/privacy/">Privacy policy</a> · <a href="/mathless/terms/">Terms of use</a>
+</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+  'use strict';
+
+  // Production project (splitly_app). The publishable key is public by
+  // design: it only identifies the project, and every read or write is still
+  // checked against the signed-in user. Never put a service-role/secret key
+  // in this file.
+  var SUPABASE_URL = 'https://gjoislwtgorpbyuixdls.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_cUE5B63fF-79QxkcEvuFNQ_Jr4llS75';
+  var FUNCTION_URL = SUPABASE_URL + '/functions/v1/delete-account';
+  var SUPPORT = 'imibrahimnisar@gmail.com';
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var CODE_RE = /^[0-9]{6}$/;
+
+  function $(id) { return document.getElementById(id); }
+  var flow = $('flow');
+
+  if (!window.supabase || typeof window.supabase.createClient !== 'function') {
+    // The CDN script failed to load (offline, blocked). Fall back to email.
+    var fail = document.createElement('p');
+    fail.textContent = "This page couldn't load what it needs. Check your connection and reload, or email " +
+      SUPPORT + ' from the address on your account.';
+    flow.appendChild(fail);
+    flow.hidden = false;
+    ['step-email', 'step-code', 'step-confirm', 'step-done'].forEach(function (id) { $(id).hidden = true; });
+    return;
+  }
+
+  // Nothing is written to this browser's storage: the session lives only in
+  // memory and dies with the tab.
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
+  });
+
+  var state = { email: '', session: null, busy: false };
+
+  function show(step, noFocus) {
+    ['step-email', 'step-code', 'step-confirm', 'step-done'].forEach(function (id) {
+      $(id).hidden = (id !== step);
+    });
+    var focusId = { 'step-email': 'email', 'step-code': 'code', 'step-confirm': 'confirm' }[step];
+    if (focusId && !noFocus) { try { $(focusId).focus(); } catch (e) {} }
+  }
+
+  function setText(id, text) { $(id).textContent = text || ''; }
+
+  function busy(btnId, on, label) {
+    state.busy = on;
+    var b = $(btnId);
+    if (on) { b.dataset.label = b.textContent; b.textContent = label; b.disabled = true; }
+    else { b.textContent = b.dataset.label || b.textContent; b.disabled = false; }
+  }
+
+  function isNetworkError(err) {
+    if (!err) return false;
+    if (err.name === 'AuthRetryableFetchError' || err.name === 'TypeError') return true;
+    return err.status === 0;
+  }
+
+  function isRateLimited(err) {
+    return !!err && (err.status === 429 ||
+      err.code === 'over_email_send_rate_limit' || err.code === 'over_request_rate_limit');
+  }
+
+  var NETWORK_MSG = "Couldn't reach Mathless. Check your connection and try again.";
+  var RATE_MSG = 'Too many codes asked for. Wait a minute, then try again.';
+
+  // Sends a code without creating an account. The reply is the same whether
+  // or not an account uses the address, so this page never reveals it:
+  // "no such user" / "signups not allowed" errors are treated as sent.
+  function sendCode(email) {
+    return sb.auth.signInWithOtp({ email: email, options: { shouldCreateUser: false } })
+      .then(function (res) {
+        var err = res && res.error;
+        if (!err) return { ok: true };
+        if (isNetworkError(err)) return { ok: false, message: NETWORK_MSG };
+        if (isRateLimited(err)) return { ok: false, message: RATE_MSG };
+        return { ok: true };
+      }, function () {
+        return { ok: false, message: NETWORK_MSG };
+      });
+  }
+
+  function sentNotice(email, fresh) {
+    return (fresh ? 'For your safety, confirm it’s you again. ' : '') +
+      'If an account uses ' + email + ', a 6-digit code is on its way. It can take a minute; check spam too.';
+  }
+
+  // Step 1
+  $('step-email').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (state.busy) return;
+    setText('email-error', '');
+    var email = $('email').value.trim().toLowerCase();
+    if (!EMAIL_RE.test(email)) { setText('email-error', 'Enter a valid email address.'); return; }
+    busy('send-btn', true, 'Sending…');
+    sendCode(email).then(function (r) {
+      busy('send-btn', false);
+      if (!r.ok) { setText('email-error', r.message); return; }
+      state.email = email;
+      setText('code-info', sentNotice(email, false));
+      setText('code-error', '');
+      $('code').value = '';
+      show('step-code');
+    });
+  });
+
+  // Step 2
+  $('code').addEventListener('input', function () {
+    var v = this.value.replace(/\D/g, '').slice(0, 6);
+    if (v !== this.value) this.value = v;
+  });
+
+  $('step-code').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (state.busy) return;
+    setText('code-error', '');
+    var code = $('code').value.trim();
+    if (!CODE_RE.test(code)) { setText('code-error', 'Enter the 6 digits from the email.'); return; }
+    busy('verify-btn', true, 'Checking…');
+    sb.auth.verifyOtp({ email: state.email, token: code, type: 'email' }).then(function (res) {
+      busy('verify-btn', false);
+      var err = res && res.error;
+      var session = res && res.data && res.data.session;
+      if (err || !session) {
+        if (isNetworkError(err)) { setText('code-error', NETWORK_MSG); return; }
+        if (isRateLimited(err)) { setText('code-error', RATE_MSG); return; }
+        setText('code-error', "That code didn't work. It may be wrong or expired. Check it, or send a new one.");
+        return;
+      }
+      state.session = session;
+      setText('who', (session.user && session.user.email) || state.email);
+      $('confirm').value = '';
+      $('delete-btn').disabled = true;
+      setText('confirm-error', '');
+      show('step-confirm');
+    }, function () {
+      busy('verify-btn', false);
+      setText('code-error', NETWORK_MSG);
+    });
+  });
+
+  $('resend-btn').addEventListener('click', function () {
+    if (state.busy || !state.email) return;
+    setText('code-error', '');
+    state.busy = true;
+    sendCode(state.email).then(function (r) {
+      state.busy = false;
+      if (!r.ok) { setText('code-error', r.message); return; }
+      setText('code-info', 'A new code is on its way to ' + state.email + ', if an account uses it.');
+      $('code').value = '';
+      try { $('code').focus(); } catch (e2) {}
+    });
+  });
+
+  $('change-email-btn').addEventListener('click', function () {
+    if (state.busy) return;
+    state.email = '';
+    setText('email-error', '');
+    show('step-email');
+  });
+
+  // Step 3
+  $('confirm').addEventListener('input', function () {
+    $('delete-btn').disabled = (this.value.trim() !== 'DELETE');
+  });
+
+  function signOutLocally() {
+    state.session = null;
+    try {
+      return sb.auth.signOut({ scope: 'local' }).catch(function () {});
+    } catch (e) { return Promise.resolve(); }
+  }
+
+  $('cancel-btn').addEventListener('click', function () {
+    if (state.busy) return;
+    signOutLocally().then(function () {
+      $('email').value = '';
+      state.email = '';
+      show('step-email');
+    });
+  });
+
+  function reauth() {
+    // The server wants a sign-in from the last few minutes. Send a fresh code
+    // to the same address and go back to the code step.
+    var email = state.email;
+    signOutLocally().then(function () { return sendCode(email); }).then(function (r) {
+      state.email = email;
+      $('code').value = '';
+      setText('code-error', r.ok ? '' : r.message);
+      setText('code-info', sentNotice(email, true));
+      show('step-code');
+    });
+  }
+
+  $('step-confirm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (state.busy) return;
+    setText('confirm-error', '');
+    if ($('confirm').value.trim() !== 'DELETE') return;
+    if (!state.session) { reauth(); return; }
+    busy('delete-btn', true, 'Deleting…');
+
+    fetch(FUNCTION_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + state.session.access_token,
+        'apikey': SUPABASE_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ confirm: 'DELETE' })
+    }).then(function (res) {
+      return res.text().then(function (text) {
+        var body = null;
+        try { body = text ? JSON.parse(text) : null; } catch (e3) {}
+        return { status: res.status, ok: res.ok, body: body };
+      });
+    }).then(function (r) {
+      if (r.ok) {
+        signOutLocally().then(function () { show('step-done'); });
+        return;
+      }
+      busy('delete-btn', false);
+      if (r.status === 401) {
+        // reauth_required (sign-in too old) or an expired token: both are
+        // fixed by a fresh code.
+        reauth();
+        return;
+      }
+      setText('confirm-error', "Something went wrong, so your account may not be fully deleted. It's safe to try again. If it keeps failing, email " + SUPPORT + '.');
+    }, function () {
+      busy('delete-btn', false);
+      setText('confirm-error', "Couldn't reach Mathless, so your account may not be deleted yet. Check your connection and try again — it's safe to retry.");
+    });
+  });
+
+  flow.hidden = false;
+  // No focus on load: the keyboard would jump the page past what is deleted.
+  show('step-email', true);
+})();
+</script>
+</body>
+</html>

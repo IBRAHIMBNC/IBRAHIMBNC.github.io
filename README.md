@@ -13,6 +13,12 @@ full context this was built from.
   path (no token). Always renders the "broken" message, since there's no
   token to parse there.
 - `404.html` — the actual invite page. See "The 404 trick" below.
+- `mathless/` — the app's public pages: `index.html` (links), `privacy/`
+  (privacy policy), `terms/` (terms of use) and `delete-account/` (the
+  self-serve web deletion page Google Play asks for; it signs in with an
+  email code and calls the `delete-account` edge function on the prod
+  Supabase project). Real directories with an `index.html`, so they are
+  served as normal 200 pages and never reach `404.html`.
 - `.well-known/assetlinks.json` — Android Digital Asset Links statement for
   `com.mathless.app`, so Android's App Links verifier trusts this site to
   open in the app instead of a browser.
