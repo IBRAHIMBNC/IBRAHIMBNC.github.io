@@ -67,7 +67,7 @@
 
 <h3>About you</h3>
 <ul>
-  <li><strong>Email address.</strong> Used to create your account and sign you in with a one-time code, or received from Google if you sign in with Google.</li>
+  <li><strong>Email address.</strong> Used to create your account and sign you in with your email and password (confirmed once with a one-time code), or received from Google if you sign in with Google.</li>
   <li><strong>Display name.</strong> The name your groups see.</li>
   <li><strong>Phone number</strong>, if you choose to add one.</li>
   <li><strong>Profile photo</strong>, if you choose to add one.</li>
@@ -106,7 +106,7 @@
 <ul>
   <li>To run the app: keep your ledger, work out balances, and sync it between your devices and the people you split with.</li>
   <li>To sign you in and keep your account secure.</li>
-  <li>To send the emails you ask for: sign-in codes and invites.</li>
+  <li>To send the emails you ask for: confirmation and password-reset codes, and invites.</li>
   <li>To read voice notes, typed lines and receipts into expenses, if you allow it.</li>
   <li>To fix problems and keep the service working.</li>
 </ul>
@@ -126,7 +126,7 @@
 <ul>
   <li><strong>Supabase</strong> — hosting, database, sign-in and server functions. Holds your account and everything you record. <a href="https://supabase.com/privacy">supabase.com/privacy</a></li>
   <li><strong>Google</strong> — Google Sign-In, if you use it (Google tells Mathless your name and email address), and the Gemini API, which reads voice notes, typed lines and receipt photos if you allow AI reading. <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> · <a href="https://ai.google.dev/gemini-api/terms">Gemini API terms</a></li>
-  <li><strong>Brevo</strong> — delivers the app's emails (sign-in codes and invites), so it receives the recipient's email address and the email's content. <a href="https://www.brevo.com/legal/privacypolicy/">brevo.com/legal/privacypolicy</a></li>
+  <li><strong>Brevo</strong> — delivers the app's emails (confirmation and password-reset codes, and invites), so it receives the recipient's email address and the email's content. <a href="https://www.brevo.com/legal/privacypolicy/">brevo.com/legal/privacypolicy</a></li>
 </ul>
 <p>These providers may store and process data on servers outside your country.</p>
 <p>Mathless may also disclose data if the law requires it.</p>
@@ -170,7 +170,7 @@
 <p>For anything else, including a copy of your data or a question about how it is used, email <a href="mailto:imibrahimnisar@gmail.com">imibrahimnisar@gmail.com</a>. We aim to reply within 30 days.</p>
 
 <h2>Security</h2>
-<p>Data travels over encrypted connections (HTTPS). The database only lets you read groups you are a member of. Sign-in uses one-time codes or Google, so Mathless never stores a password for you. No system is perfectly secure; if a breach affects your data, you will be told.</p>
+<p>Data travels over encrypted connections (HTTPS). The database only lets you read groups you are a member of. Sign-in uses your email and password, or Google. If you use a password, it is stored only as a one-way hash by the authentication provider, never in readable form. No system is perfectly secure; if a breach affects your data, you will be told.</p>
 
 <h2>Children</h2>
 <p>Mathless is not directed at children under 13, and does not knowingly collect data from them. If you believe a child under 13 has given Mathless their data, email <a href="mailto:imibrahimnisar@gmail.com">imibrahimnisar@gmail.com</a> and it will be deleted.</p>
